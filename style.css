@@ -6,6 +6,22 @@
 
 body{
   font-family: "SourceSans", sans-serif;
+  display: block;
+  border: solid black 1px;
+}
+
+div.content {
+    display: grid;
+    border: solid black 1px;
+    grid-template-rows: 2fr 1fr 8fr;
+}
+
+.tab-list{
   display: grid;
+  border: solid black 1px;
+  grid-template-columns: repeat(3,1fr);
+}
+
+div{
   border: solid black 1px;
 }

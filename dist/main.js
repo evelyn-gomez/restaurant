@@ -16,7 +16,7 @@
   \************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"contact\": () => (/* binding */ contact)\n/* harmony export */ });\nfunction contact(){\n let div = document.createElement('div');\n div.textContent = 'contact-info'; \n\n return div; \n}\n\n//# sourceURL=webpack://restaurant/./src/contact.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"contact\": () => (/* binding */ contact)\n/* harmony export */ });\nfunction contact() {\n  let div = document.createElement('div');\n  //if contact is clicked remove whatever content is in main home page append this content \n  div.textContent = 'here is the contact info container'; \n  return div; \n}\n\n\n//# sourceURL=webpack://restaurant/./src/contact.js?");
 
 /***/ }),
 
@@ -26,17 +26,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \***********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"header\": () => (/* binding */ header),\n/* harmony export */   \"header_div\": () => (/* binding */ header_div)\n/* harmony export */ });\nlet header_div = document.createElement('div');\n \nlet header = document.createElement('h1'); \n\n\n//# sourceURL=webpack://restaurant/./src/header.js?");
-
-/***/ }),
-
-/***/ "./src/homepage.js":
-/*!*************************!*\
-  !*** ./src/homepage.js ***!
-  \*************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"homepage\": () => (/* binding */ homepage)\n/* harmony export */ });\n/* harmony import */ var _menu__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./menu */ \"./src/menu.js\");\n/* harmony import */ var _contact__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./contact */ \"./src/contact.js\");\n\n\n\nfunction homepage(){\n  let body_div = document.createElement('div'); \n  body_div.textContent = 'body';\n\n  body_div.appendChild((0,_menu__WEBPACK_IMPORTED_MODULE_0__.menu)());\n  body_div.appendChild((0,_contact__WEBPACK_IMPORTED_MODULE_1__.contact)());  \n  return body_div; \n}\n\n//# sourceURL=webpack://restaurant/./src/homepage.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"header\": () => (/* binding */ header)\n/* harmony export */ });\nfunction header(){\n  let header_div = document.createElement('div');\n  let header = document.createElement('h1'); \n\n  header_div.textContent = 'header container';\n  header.textContent = 'pizzeria taqueria'; \n\n  header_div.appendChild(header); \n  return header_div; \n}\n \n\n\n//# sourceURL=webpack://restaurant/./src/header.js?");
 
 /***/ }),
 
@@ -56,7 +46,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _ini
   \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"initialLoad\": () => (/* binding */ initialLoad)\n/* harmony export */ });\n/* harmony import */ var _header__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./header */ \"./src/header.js\");\n/* harmony import */ var _homepage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./homepage */ \"./src/homepage.js\");\n\n\nfunction initialLoad(){\n  let content_div = document.querySelector('#content');\n  _header__WEBPACK_IMPORTED_MODULE_0__.header_div.textContent = 'Header container'; \n  content_div.appendChild((0,_homepage__WEBPACK_IMPORTED_MODULE_1__.homepage)()); \n  (0,_homepage__WEBPACK_IMPORTED_MODULE_1__.homepage)().appendChild(_header__WEBPACK_IMPORTED_MODULE_0__.header_div); \n  _header__WEBPACK_IMPORTED_MODULE_0__.header_div.appendChild(_header__WEBPACK_IMPORTED_MODULE_0__.header); \n  _header__WEBPACK_IMPORTED_MODULE_0__.header.textContent = 'header';\n  \n  return;\n}\n\n\n//# sourceURL=webpack://restaurant/./src/initial_load.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"initialLoad\": () => (/* binding */ initialLoad)\n/* harmony export */ });\n/* harmony import */ var _header__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./header */ \"./src/header.js\");\n/* harmony import */ var _contact__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./contact */ \"./src/contact.js\");\n/* harmony import */ var _menu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./menu */ \"./src/menu.js\");\n\n\n\n\nfunction createTabHeader(tab_name, content_info){\n  let tab = document.createElement('div');\n  let content = content_info; \n  tab.appendChild(content); \n  tab.textContent = tab_name;\n  return tab; \n}\n\nfunction createContact(){\n  let tab = createTabHeader(\"contact\", (0,_contact__WEBPACK_IMPORTED_MODULE_1__.contact)()); \n  tab.addEventListener('click', (e)=>{\n    console.log(e);\n    console.log('contact event'); \n  })\n  return tab; \n}\n\nfunction createMenu(){\n  let tab = createTabHeader(\"menu\", (0,_menu__WEBPACK_IMPORTED_MODULE_2__.menu)());\n  tab.addEventListener('click', (e)=>{\n    console.log(e);\n    console.log('menu event');\n  });\n  return tab;\n}\n\nfunction createHome(){\n  let home_tab = document.createElement('div');\n  let content = document.createElement('p');\n  home_tab.textContent = \"home tab\"\n  content.textContent = \"content of Home page which should be home\"; \n  // home_tab.appendChild(content); \n\n  home_tab.addEventListener('click', (e)=>{\n    console.log(e);\n    console.log('home event'); \n  })\n  \n  return home_tab; \n}\n\nfunction createNavBar(){\n  let tab_container = document.createElement('div');\n  tab_container.classList.add('tab-list');\n  tab_container.appendChild(createHome()); \n  tab_container.appendChild(createMenu());\n  tab_container.appendChild(createContact());\n  return tab_container; \n}\n\nfunction initialLoad(){\n  let content_div = document.querySelector('#content');\n  let body_div = document.createElement('div'); \n\n  content_div.appendChild((0,_header__WEBPACK_IMPORTED_MODULE_0__.header)()); \n  content_div.appendChild(createNavBar()); \n  content_div.append(body_div); \n  body_div.textContent = \"some paragraph here \";\n}\n\n\n\n//# sourceURL=webpack://restaurant/./src/initial_load.js?");
 
 /***/ }),
 
@@ -66,7 +56,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \*********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"menu\": () => (/* binding */ menu)\n/* harmony export */ });\nfunction menu(){\n  let div = document.createElement('div');\n  div.textContent = 'menu';\n  return div;\n}\n\n//# sourceURL=webpack://restaurant/./src/menu.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"menu\": () => (/* binding */ menu)\n/* harmony export */ });\nfunction menu(){\n  let content = document.createElement('div');\n  let p = document.createElement('p');\n\n  content.appendChild(p); \n  p.textContent = \"Paragraph -- for menu content\"; \n  return content; \n}\n\n//# sourceURL=webpack://restaurant/./src/menu.js?");
 
 /***/ })
 

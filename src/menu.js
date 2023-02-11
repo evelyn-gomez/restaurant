@@ -1,5 +1,8 @@
 export function menu(){
-  let div = document.createElement('div');
-  div.textContent = 'menu';
-  return div;
+  let content = document.createElement('div');
+  let p = document.createElement('p');
+
+  content.appendChild(p); 
+  p.textContent = "Paragraph -- for menu content"; 
+  return content; 
 }

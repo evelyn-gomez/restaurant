@@ -9,7 +9,7 @@ export function menu(){
 
 export function menu_Content(){
   let main_div = document.createElement('div'); 
-  main_div.setAttribute('id', 'menu_body');
+  main_div.setAttribute('id', 'menu-body');
   let menu_items = [];
   
   for (let i =0; i < 5; i++){

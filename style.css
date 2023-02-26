@@ -2,6 +2,11 @@
   font-family: "SourceSans";
   src: url(./fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf);
 }
+@font-face {
+  font-family: "Cap-Sourcesans";
+  src: url(./fonts/Source_Sans_Pro/SourceSansPro-SemiBold.ttf);
+}
+
 
 
 body{
@@ -10,25 +15,104 @@ body{
   border: solid black 1px;
 }
 
-div.content {
-    display: grid;
-    border: solid black 1px;
-    grid-template-rows: 2fr 1fr 8fr;
+#content {
+  display: grid;
+  border: solid black 1px;
+  grid-template-rows: .5fr .5fr 10fr;
+  background-color: #465C69;
 }
 
+#header-container{
+  background-color: #DDC8C4;
+  color: #283b46; 
+}
+
+h1 {
+  display: flex;
+  font-size: 40px;
+  justify-content: center;
+}
 .tab-list{
   display: grid;
-  border: solid black 1px;
+  border: none;
+  background-color: #DDC8C4 ;
   grid-template-columns: repeat(3,1fr);
+  justify-content: center;
+  color: #283b46;
 }
 
-div{
-  border: solid black 1px;
+.tab-list div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Cap-Sourcesans";
+  font-size: 25px;
 }
 
-#home-body-content
+.tab-list div:hover {
+  color: #F0F389;
+}
 
-#contact-body{
+.green{
+  color:#F0F389; 
+}
+
+#home-body-content{
+display: grid;
+grid-template-rows: 4fr 1fr;
+background-image: url(./images/hybrid-storytellers-1xw3GcVeNas-unsplash.jpg);
+background-repeat:no-repeat;
+background-size:cover;
+}
+/** home-body-content divs*/
+#num0{
+  border-radius: 101px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem; 
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  margin: 12rem 6rem;
+  background-color: beige;
+  opacity: 63%;
+}
+
+#hero{
+
+}
+
+#orderbtn-div{
+  display: flex;
+}
+
+#orderbtn-div button{
+  border-radius: 10px;
+  font-size: 1.75rem;
+}
+
+#num1{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 10px;
+
+}
+
+#address-info-div{
+  display:flex; 
+  font: 20px;
+}
+
+#contact-body {
   display: grid;
-  
+
+}
+#contact-body div{
+  border: solid black 1px
+}
+
+#menu-body div{
+  border: solid black 1px
 }

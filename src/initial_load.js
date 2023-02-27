@@ -1,127 +1,141 @@
 import {header} from "./header";
-import { contact, contact_content } from "./contact";
-import { menu, menu_Content } from "./menu";
+import { contact, contact_content as contactContent } from "./contact";
+import { menu, menu_Content as menuContent } from "./menu";
 
-let content_div = document.querySelector('#content');
-let currentBodyDiv = homepage_content(); 
-let currentTab = undefined;
-let menu_tab; 
+/** @typedef {{ header: HTMLElement; content: HTMLElement }} Tab */
 
-function setCurrentTab(tab){
-  if (currentTab == undefined){
-    currentTab = tab; 
-    currentTab.setAttribute('class', 'green'); 
-    return; 
+class Page {
+  /** @type {HTMLElement} */
+  contentDiv;
+  /** @type {Tab} */
+  currentTab;
+  /** @type {HTMLElement} */
+  currentBodyDiv;
+
+  /** @type {Tab} */
+  homeTab;
+  /** @type {Tab} */
+  menuTab;
+  /** @type {Tab} */
+  contactTab;
+
+  constructor() {
+    this.contentDiv = document.querySelector('#content');
+    this.contentDiv.appendChild(header()); 
+    this.contentDiv.appendChild(this.createNavBar()); 
+    this.setCurrentTab(this.homeTab);
   }
-  currentTab.classList.remove('green'); 
-  currentTab = tab; 
-  currentTab.setAttribute('class', 'green'); 
-}
 
-function createTabHeader(tab_name){
-  let tab = document.createElement('div');
-  // let content = content_info; 
-  // tab.appendChild(content); 
-  tab.textContent = tab_name;
-  return tab; 
-}
-
-function globalEListener(body_content){
-  content_div.removeChild(currentBodyDiv);
-  currentBodyDiv = body_content;  
-  content_div.appendChild(currentBodyDiv);
-  return 
-}
-
-function createContact(){
-  let tab = createTabHeader("CONTACT"); 
-  tab.setAttribute('id','contact-content-div'); 
-  tab.addEventListener('click', ()=>{
-    setCurrentTab(tab); 
-    if(currentBodyDiv.id == 'contact-body'){
-      return;
+  /**
+   * @param {Tab} tabObject 
+   */
+  setCurrentTab(tabObject) {
+    if(this.currentTab){
+      this.currentTab.header.classList.remove('green');
     }
-    globalEListener(contact_content())
-  });
-  return tab; 
-}
-
-function createMenu(){
-  menu_tab = createTabHeader("MENU");
-  menu_tab.setAttribute('id', 'menu-content-div'); 
-  menu_tab.addEventListener('click', ()=>{
-    setCurrentTab(menu_tab); 
-    if(currentBodyDiv.id == 'menu-body'){
-      return; 
-    }
-    globalEListener(menu_Content());
-  }) 
-  return menu_tab;
-}
-
-export function createHome(){
-  let home_tab = document.createElement('div');
-  home_tab.textContent = "HOME";
-  setCurrentTab(home_tab); 
-  home_tab.addEventListener('click', ()=>{
-    setCurrentTab(home_tab);  
-    globalEListener(homepage_content());
-  })
-  return home_tab; 
-}
-
-
-
-
-export function homepage_content(){
-  let body_div = document.createElement('div');
-  for(let i = 0; i < 2; i++){
-    let div = document.createElement('div'); 
-    div.setAttribute('id', `${"num"+i}`);
-    if(div.id == "num0"){
-      let hero = document.createElement('div');
-      let btnDiv = document.createElement('div');
-      let button = document.createElement('button');
-
-      div.append(hero, btnDiv); 
-      btnDiv.append(button); 
-
-      hero.setAttribute('id', 'hero'); 
-      btnDiv.setAttribute('id', 'orderbtn-div'); 
-
-      hero.textContent = "It's a pizza, it's a taco.... It's a pizza taco"; 
-      button.textContent = "order here"; 
-    
-      button.addEventListener('click',()=>{
-        setCurrentTab(menu_tab);
-        globalEListener(menu_Content()); 
-      })
-
-    } else{
-      let address_div = document.createElement('div'); 
-      address_div.setAttribute('class', 'address-info-div'); 
-      address_div.textContent = 'Contact US';
-      div.appendChild(address_div); 
-    }
-    body_div.appendChild(div); 
-    body_div.setAttribute('id','home-body-content'); 
+    this.currentTab = tabObject; 
+    this.currentTab.header.setAttribute('class', 'green'); 
+    this.replaceBodyContent(tabObject.content);
   }
-  return body_div;
-}
 
-function createNavBar(){
-  let tab_container = document.createElement('div');
-  tab_container.classList.add('tab-list');
+  createTabHeader(tabName) {
+    let tab = document.createElement('div');
+    tab.textContent = tabName;
+    return tab;
+  }
+
+  replaceBodyContent(bodyContent) {
+    if (this.currentBodyDiv) {
+      this.contentDiv.removeChild(this.currentBodyDiv);
+    }
+    this.currentBodyDiv = bodyContent;  
+    this.contentDiv.appendChild(this.currentBodyDiv);
+  }
+
+  /**
+   * @returns {Tab}
+   */
+  createContact() {
+    let header = this.createTabHeader("CONTACT"); 
+    header.setAttribute('id','contact-content-div'); 
+    header.onclick = () => this.setCurrentTab(this.contactTab);
+    let content = contactContent();
+    return { header, content };
+  }
+
+  /**
+   * @returns {Tab}
+   */
+  createMenuTab() {
+    let header = this.createTabHeader("MENU");
+    header.setAttribute('id', 'menu-content-div'); 
+    header.onclick = () => this.setCurrentTab(this.menuTab);
+    let content = menuContent();
+    return { header, content };
+  }
+
+  /**
+   * @returns {Tab}
+   */
+  createHomeTab() {
+    let header = this.createTabHeader("HOME");
+    header.setAttribute('id', 'home-content-div'); 
+    header.onclick = () => this.setCurrentTab(this.homeTab);
+    let content = this.homepageContent();
+    return { header, content };
+  }
+
+  homepageContent() {
+    let bodyDiv = document.createElement('div');
+    for(let i = 0; i < 2; i++){
+      let div = document.createElement('div'); 
+      div.setAttribute('id', `${"num"+i}`);
+      if (div.id == "num0") {
+        let hero = document.createElement('div');
+        let btnDiv = document.createElement('div');
+        let button = document.createElement('button');
   
-  tab_container.appendChild(createHome()); 
-  tab_container.appendChild(createMenu());
-  tab_container.appendChild(createContact());
-  return tab_container; 
+        div.append(hero, btnDiv); 
+        btnDiv.append(button); 
+  
+        hero.setAttribute('id', 'hero'); 
+        btnDiv.setAttribute('id', 'orderbtn-div'); 
+  
+        hero.textContent = "It's a pizza, it's a taco.... It's a pizza taco"; 
+        button.textContent = "order here"; 
+      
+        button.addEventListener('click',()=>{
+          this.setCurrentTab(this.menuTab);
+          this.replaceBodyContent(menuContent()); 
+        })
+      } else {
+        let contactInfoDiv = document.createElement('div'); 
+        contactInfoDiv.setAttribute('class', 'address-info-div'); 
+        contactInfoDiv.append(contactContent()); 
+        div.appendChild(contactInfoDiv); 
+      }
+  
+      bodyDiv.appendChild(div); 
+      bodyDiv.setAttribute('id','home-body-content'); 
+    }
+    return bodyDiv;
+  }
+
+  createNavBar() {
+    let tabContainer = document.createElement('div');
+    tabContainer.classList.add('tab-list');
+
+    this.homeTab = this.createHomeTab();
+    this.menuTab = this.createMenuTab();
+    this.contactTab = this.createContact();
+    
+    tabContainer.appendChild(this.homeTab.header); 
+    tabContainer.appendChild(this.menuTab.header);
+    tabContainer.appendChild(this.contactTab.header);
+    return tabContainer; 
+  }
 }
 
-export function initialLoad(){
-  content_div.appendChild(header()); 
-  content_div.appendChild(createNavBar()); 
-  content_div.append(currentBodyDiv); 
+export function initialLoad() {
+  new Page();
 }
-

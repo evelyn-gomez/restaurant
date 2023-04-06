@@ -13,16 +13,12 @@ export function contact() {
   //NOT USING 
 }
 
-function contact_dupe(){
+
+export function contactContent(){
   address_div.textContent ='address';
   call_div.textContent= 'phone';
   hours_div.textContent = 'hours of op';
   main_div.append(address_div,call_div,hours_div);
-}
-export function contact_content(){
- 
-  main_div.append(address_div,call_div,hours_div);
-
   return main_div;
   // main_div.append(address_div, call_div, hours_div);  
 

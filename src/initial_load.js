@@ -1,6 +1,7 @@
 import {header} from "./header";
-import { contact, contact_content as contactContent } from "./contact";
-import { menu, menu_Content as menuContent } from "./menu";
+import { contactContent } from "./contact";
+import { menuContent} from "./menu";
+import { importHomeContent } from "./home";
 
 /** @typedef {{ header: HTMLElement; content: HTMLElement }} Tab */
 
@@ -85,42 +86,16 @@ class Page {
     return { header, content };
   }
 
+  /**@return {HTMLElement} */
   homepageContent() {
     let bodyDiv = document.createElement('div');
-    for(let i = 0; i < 2; i++){
-      let div = document.createElement('div'); 
-      div.setAttribute('id', `${"num"+i}`);
-      if (div.id == "num0") {
-        let hero = document.createElement('div');
-        let btnDiv = document.createElement('div');
-        let button = document.createElement('button');
-  
-        div.append(hero, btnDiv); 
-        btnDiv.append(button); 
-  
-        hero.setAttribute('id', 'hero'); 
-        btnDiv.setAttribute('id', 'orderbtn-div'); 
-  
-        hero.textContent = "It's a pizza, it's a taco.... It's a pizza taco"; 
-        button.textContent = "order here"; 
-      
-        button.addEventListener('click',()=>{
-          this.setCurrentTab(this.menuTab);
-          this.replaceBodyContent(menuContent()); 
-        })
-      } else {
-        let contactInfoDiv = document.createElement('div'); 
-        contactInfoDiv.setAttribute('class', 'address-info-div'); 
-        contactInfoDiv.append(contactContent()); 
-        div.appendChild(contactInfoDiv); 
-      }
-  
-      bodyDiv.appendChild(div); 
-      bodyDiv.setAttribute('id','home-body-content'); 
-    }
+    bodyDiv.appendChild(importHomeContent()); 
+    bodyDiv.setAttribute('id','home-body-content'); 
     return bodyDiv;
   }
-
+/**
+ * @returns {HTMLElement}
+ *  */
   createNavBar() {
     let tabContainer = document.createElement('div');
     tabContainer.classList.add('tab-list');
@@ -134,8 +109,21 @@ class Page {
     tabContainer.appendChild(this.contactTab.header);
     return tabContainer; 
   }
+
+  // listeners(){
+    
+  // }
 }
 
+let newPage = new Page(); 
 export function initialLoad() {
-  new Page();
+  newPage; 
 }
+
+export default newPage; 
+
+
+
+
+
+

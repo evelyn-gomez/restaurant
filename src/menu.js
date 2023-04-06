@@ -5,9 +5,9 @@ export function menu(){
   content.appendChild(p); 
   p.textContent = "Paragraph -- for menu content"; 
   return content; 
-}
+}   
 
-export function menu_Content(){
+export function menuContent(){
   let main_div = document.createElement('div'); 
   main_div.setAttribute('id', 'menu-body');
   let menu_items = [];

@@ -11,15 +11,18 @@
 
 body{
   font-family: "SourceSans", sans-serif;
-  display: block;
-  border: solid black 1px;
+  display: inline;
+  margin: 0px;
+  overscroll-behavior: none;
+  scroll-behavior: none;
 }
 
 #content {
   display: grid;
-  border: solid black 1px;
+  /* border: solid black 1px; */
   grid-template-rows: .5fr .5fr 10fr;
   background-color: #465C69;
+  scroll-behavior: smooth;
 }
 
 #header-container{
@@ -27,6 +30,13 @@ body{
   color: #283b46; 
 }
 
+
+#exportedhomepagediv{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 h1 {
   display: flex;
   font-size: 40px;
@@ -59,26 +69,27 @@ h1 {
 
 #home-body-content{
 display: grid;
-grid-template-rows: 4fr 1fr;
+grid-template-rows: 2fr 1fr;
 background-image: url(./images/hybrid-storytellers-1xw3GcVeNas-unsplash.jpg);
 background-repeat:no-repeat;
 background-size:cover;
 }
 /** home-body-content divs*/
 #num0{
-  border-radius: 101px;
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
   row-gap: 1rem; 
   justify-content: center;
   align-items: center;
   font-size: 40px;
-  margin: 12rem 6rem;
+  padding: 25px 35px;
   background-color: beige;
   opacity: 63%;
 }
 
-#hero{
+#numb1{
+  display: flex;
 
 }
 
@@ -96,8 +107,17 @@ background-size:cover;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-margin-top: 10px;
-
+  margin-top: 10px; 
+  background-color: rgb(222, 251, 179);
+}
+table{
+  border-collapse: collapse;
+  border: 1px solid;
+  margin-left:auto;
+  margin-right:auto;
+}
+tr:nth-child(even) {
+  background-color:lightgray;
 }
 
 #address-info-div{
@@ -105,10 +125,17 @@ margin-top: 10px;
   font: 20px;
 }
 
-#contact-body {
-  display: grid;
-
+#contactbody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+  width: 30vh;
+  height: 35vh;
 }
+
+
 #contact-body div{
   border: solid black 1px
 }

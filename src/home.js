@@ -1,14 +1,13 @@
-import { contactContent } from "./contact";
-import {menuContent } from "./menu";
+import {contactContent } from "./contact";
 import newPage from "./initial_load";
 
 export function importHomeContent(){
-  let pdiv = document.createElement('div'); 
+  let exportedhomepagediv = document.createElement('div');
+  exportedhomepagediv.setAttribute('id', 'exportedhomepagediv'); 
   for(let i = 0; i < 2; i++){
     let div = document.createElement('div'); 
     div.setAttribute('id', `${"num"+i}`);
-    debugger
-    if (div.id == "num0") {
+    if(div.id == "num0") {
       let hero = document.createElement('div');
       let btnDiv = document.createElement('div');
       let button = document.createElement('button');
@@ -23,17 +22,13 @@ export function importHomeContent(){
       button.textContent = "order here"; 
     
       button.addEventListener('click',()=>{
-        console.log(menuContent); 
         newPage.setCurrentTab(newPage.menuTab); 
         return;
       })
-    } else{  
-      console.log(div);
-      let contactInfoDiv = document.createElement('div'); 
-      contactInfoDiv.setAttribute('class', 'address-info-div'); 
-      contactInfoDiv.append(contactContent()); 
-      div.appendChild(contactInfoDiv); 
+    } else{ 
+      div.append(contactContent());
     }
-    return div; 
+    exportedhomepagediv.appendChild(div); 
   }
+  return exportedhomepagediv; 
 } 

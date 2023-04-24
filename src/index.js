@@ -1,3 +1,3 @@
-import { initialLoad } from "./initial_load";
+import { initial_load } from "./initial_load";
 
-initialLoad();  
+initial_load();

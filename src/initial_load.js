@@ -56,7 +56,7 @@ class Page {
   /**
    * @returns {Tab}
    */
-  createContact() {
+  createContactTab() {
     let header = this.createTabHeader("CONTACT"); 
     header.setAttribute('id','contact-content-div'); 
     header.onclick = () => this.setCurrentTab(this.contactTab);
@@ -93,6 +93,7 @@ class Page {
     bodyDiv.setAttribute('id','home-body-content'); 
     return bodyDiv;
   }
+
 /**
  * @returns {HTMLElement}
  *  */
@@ -102,22 +103,18 @@ class Page {
 
     this.homeTab = this.createHomeTab();
     this.menuTab = this.createMenuTab();
-    this.contactTab = this.createContact();
+    this.contactTab = this.createContactTab();
     
     tabContainer.appendChild(this.homeTab.header); 
     tabContainer.appendChild(this.menuTab.header);
     tabContainer.appendChild(this.contactTab.header);
     return tabContainer; 
   }
-
-  // listeners(){
-    
-  // }
 }
 
 let newPage = new Page(); 
-export function initialLoad() {
-  newPage; 
+export function initial_load() {
+  newPage
 }
 
 export default newPage; 

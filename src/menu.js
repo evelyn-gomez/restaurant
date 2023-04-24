@@ -1,4 +1,4 @@
-export function menu(){
+function menu(){
   let content = document.createElement('div');
   let p = document.createElement('p');
 
@@ -16,9 +16,8 @@ export function menuContent(){
     let item = document.createElement('div'); 
     item.setAttribute('class', 'menu-item'); 
     item.setAttribute('id',`${i}`); 
-
     menu_items.push(item); 
   }
-
+  main_div.append(menu());
   return main_div;
 }

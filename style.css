@@ -25,6 +25,11 @@ body{
   scroll-behavior: smooth;
 }
 
+#innerContentDiv{
+  display:flex; 
+  
+}
+
 #header-container{
   background-color: #DDC8C4;
   color: #283b46; 
@@ -84,8 +89,7 @@ background-size:cover;
   align-items: center;
   font-size: 40px;
   padding: 25px 35px;
-  background-color: beige;
-  opacity: 63%;
+  background-color: rgb(245, 245, 220, .5);
 }
 
 #numb1{
@@ -108,13 +112,27 @@ background-size:cover;
   align-items: center;
   justify-content: flex-start;
   margin-top: 10px; 
-  background-color: rgb(222, 251, 179);
+  background-color: rgb(222, 251, 179, .6);
+  border-radius: 15px;
+}
+
+div#hours{
+  display:flex;
+
+  align-self: center;
 }
 table{
   border-collapse: collapse;
-  border: 1px solid;
+  /* border: 1px solid; */
   margin-left:auto;
   margin-right:auto;
+}
+
+tr{
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  column-gap: 15px;
 }
 tr:nth-child(even) {
   background-color:lightgray;
@@ -129,10 +147,13 @@ tr:nth-child(even) {
   display: flex;
   flex-direction: column;
   align-items: center;
+  row-gap: 20px;
   justify-content: center;
-  margin: 1rem;
-  width: 30vh;
-  height: 35vh;
+  /* margin: 1rem; */
+  width: 40vh;
+  height: 45vh;
+  font-family: 'Cap-Sourcesans';
+  font-size: larger;
 }
 
 
@@ -142,4 +163,8 @@ tr:nth-child(even) {
 
 #menu-body div{
   border: solid black 1px
+}
+
+footer{
+  display: flex;
 }

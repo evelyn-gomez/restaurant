@@ -1,7 +1,8 @@
 import {header} from "./header";
+import {footer} from "./header";
 import { contactContent } from "./contact";
 import { menuContent} from "./menu";
-import { importHomeContent } from "./home";
+import { homepageContent } from "./home";
 
 /** @typedef {{ header: HTMLElement; content: HTMLElement }} Tab */
 
@@ -12,19 +13,25 @@ class Page {
   currentTab;
   /** @type {HTMLElement} */
   currentBodyDiv;
-
   /** @type {Tab} */
   homeTab;
   /** @type {Tab} */
   menuTab;
   /** @type {Tab} */
   contactTab;
+  /** @type {HTMLElement} */
+  navBar;
+  /** @type {HTMLElement} */
+  footer;
 
   constructor() {
     this.contentDiv = document.querySelector('#content');
     this.contentDiv.appendChild(header()); 
-    this.contentDiv.appendChild(this.createNavBar()); 
-    this.setCurrentTab(this.homeTab);
+    this.navBar = this.createNavBar();
+    this.contentDiv.appendChild(this.navBar); 
+    this.setCurrentTab(this.homeTab); 
+    this.footer = footer();
+    this.contentDiv.appendChild(this.footer); 
   }
 
   /**
@@ -50,7 +57,7 @@ class Page {
       this.contentDiv.removeChild(this.currentBodyDiv);
     }
     this.currentBodyDiv = bodyContent;  
-    this.contentDiv.appendChild(this.currentBodyDiv);
+    this.navBar.after(this.currentBodyDiv);
   }
 
   /**
@@ -82,16 +89,8 @@ class Page {
     let header = this.createTabHeader("HOME");
     header.setAttribute('id', 'home-content-div'); 
     header.onclick = () => this.setCurrentTab(this.homeTab);
-    let content = this.homepageContent();
+    let content = homepageContent();
     return { header, content };
-  }
-
-  /**@return {HTMLElement} */
-  homepageContent() {
-    let bodyDiv = document.createElement('div');
-    bodyDiv.appendChild(importHomeContent()); 
-    bodyDiv.setAttribute('id','home-body-content'); 
-    return bodyDiv;
   }
 
 /**
@@ -118,7 +117,6 @@ export function initial_load() {
 }
 
 export default newPage; 
-
 
 
 

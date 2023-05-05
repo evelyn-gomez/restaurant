@@ -8,4 +8,13 @@ export function header(){
   header_div.appendChild(header); 
   return header_div; 
 }
+
+export function footer(){
+  let footer = document.createElement('footer');
+  let div = document.createElement('div'); 
+
+  div.textContent = 'add here github info'; 
+  footer.append(div)
+  return footer; 
+}
  

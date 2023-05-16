@@ -1,6 +1,6 @@
 import {header} from "./header";
 import {footer} from "./footer";
-import { contactContent } from "./contact";
+import { contactContent, contactInfo } from "./contact";
 import { menuContent} from "./menu";
 import { homepageContent } from "./home";
 
@@ -67,7 +67,7 @@ class Page {
     let header = this.createTabHeader("CONTACT"); 
     header.setAttribute('id','contact-header'); 
     header.onclick = () => this.setCurrentTab(this.contactTab);
-    let content = contactContent();
+    let content = contactInfo();
     return { header, content };
   }
 

@@ -3,15 +3,12 @@ import newPage from "./initial_load";
 
 export function homepageContent(){
   let bodyDiv = document.createElement('div');
-  bodyDiv.appendChild(importHomeContent()); 
-  bodyDiv.setAttribute('id','home-body-content'); 
+  importHomeContent(bodyDiv); 
+  bodyDiv.setAttribute('id','home-content'); 
   return bodyDiv;
 }
 
-function importHomeContent(){
-let exportedhomepagediv = document.createElement('div');
-
-exportedhomepagediv.setAttribute('id', 'exportedhomepagediv'); 
+function importHomeContent(mainDiv){
 
 for(let i = 0; i < 2; i++){
   let div = document.createElement('div'); 
@@ -24,7 +21,7 @@ for(let i = 0; i < 2; i++){
     btnDiv.setAttribute('id', 'orderbtn-div'); 
     hero.setAttribute('id', 'hero'); 
 
-    hero.textContent = "It's a pizza, it's a taco.... It's a pizza taco"; 
+    hero.textContent = "It's a pizza, it's a taco.... It's a pizza taco!"; 
     button.textContent = "order here"; 
 
     btnDiv.append(button); 
@@ -35,9 +32,11 @@ for(let i = 0; i < 2; i++){
       return;
     })
   } else{ 
-    div.append(contactInfo());
+    // div.append(contactInfo());
+   return; 
   }
-  exportedhomepagediv.appendChild(div); 
+
+  mainDiv.appendChild(div); 
 }
-  return exportedhomepagediv; 
+return; 
 } 

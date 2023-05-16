@@ -1,5 +1,5 @@
 import {header} from "./header";
-import {footer} from "./header";
+import {footer} from "./footer";
 import { contactContent } from "./contact";
 import { menuContent} from "./menu";
 import { homepageContent } from "./home";
@@ -65,7 +65,7 @@ class Page {
    */
   createContactTab() {
     let header = this.createTabHeader("CONTACT"); 
-    header.setAttribute('id','contact-content-div'); 
+    header.setAttribute('id','contact-header'); 
     header.onclick = () => this.setCurrentTab(this.contactTab);
     let content = contactContent();
     return { header, content };
@@ -76,7 +76,7 @@ class Page {
    */
   createMenuTab() {
     let header = this.createTabHeader("MENU");
-    header.setAttribute('id', 'menu-content-div'); 
+    header.setAttribute('id', 'menu-header'); 
     header.onclick = () => this.setCurrentTab(this.menuTab);
     let content = menuContent();
     return { header, content };
@@ -87,7 +87,7 @@ class Page {
    */
   createHomeTab() {
     let header = this.createTabHeader("HOME");
-    header.setAttribute('id', 'home-content-div'); 
+    header.setAttribute('id', 'home-header'); 
     header.onclick = () => this.setCurrentTab(this.homeTab);
     let content = homepageContent();
     return { header, content };

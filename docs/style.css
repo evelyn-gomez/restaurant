@@ -94,7 +94,11 @@ h1 {
   padding: 30px;
   overflow-y: auto;
   align-items: center;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
+
 
 /* #home-content-alternative{
   display: grid;

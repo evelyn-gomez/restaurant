@@ -90,7 +90,7 @@ h1 {
 /* Home content*/
 #home-content{
   display: grid;
-  background-image: url(/images/coloring-picture-g4efb0f330_640.jpg);
+  background-image: url(./dist/images/coloring-picture-g4efb0f330_640.jpg);
   padding: 30px;
   overflow-y: auto;
   align-items: center;

@@ -12,7 +12,7 @@ export function menuContent(){
   function createItemPic(){
     let div = document.createElement('div');
     let pic = document.createElement('img'); 
-    pic.src = '/images/pizza-gfd7a56836_640.jpg'; 
+    pic.src = '../images/pizza-gfd7a56836_640.jpg'; 
     div.appendChild(pic); 
     return div; 
   }

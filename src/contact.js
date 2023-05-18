@@ -15,8 +15,21 @@ const phone = '123-456-7890';
 const phoneHeader = 'Phone:'
 
 export function contactContent(){
-  let div = contactInfo();
-  div.setAttribute('id', 'contact-content')
+  let div = document.createElement('div');
+  div.setAttribute('id', 'contact-content');
+
+  let formContainer = document.createElement('div'); 
+  formContainer.setAttribute('id', 'form-container');
+  formContainer.appendChild(createContactUsForm());
+
+  const formAndMap = document.createElement('div'); 
+  formAndMap.id = 'form-and-map-div'; 
+
+  formAndMap.appendChild(formContainer);
+  formAndMap.appendChild(addGoogleMap());
+  
+  div.appendChild(formAndMap); 
+  div.appendChild(contactInfo()); 
   return div;
 };
 
@@ -52,6 +65,21 @@ function createHoursTable(){
   return table; 
 }; 
 
+function addGoogleMap(){
+  let div = document.createElement('div'); 
+  div.setAttribute('id', 'maps-div')
+  const iframe = document.createElement("iframe");
+  iframe.src = "https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d24740.719346221595!2d-95.45897666461521!3d29.768871456535464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1s1234%20anywhere%20st.%2C%20City%2CState%2012345!5e0!3m2!1sen!2sus!4v1684434215763!5m2!1sen!2sus";
+  iframe.width = 500;
+  iframe.height = 350;
+  iframe.style.border = "0";
+  iframe.allowfullscreen = true;
+  iframe.loading = "lazy";
+  iframe.referrerpolicy = "no-referrer-when-downgrade";
+
+  div.appendChild(iframe); 
+  return div;
+}
 
 function createContactUnit(content, header){
 let contentDiv = document.createElement('div'); 
@@ -68,6 +96,45 @@ if(header == 'Hours:'){
 contentDiv.appendChild(head);
 contentDiv.appendChild(cont); 
 return contentDiv; 
+}
+
+function createContactUsForm(){
+  const form = document.createElement('form'); 
+  const h2 = document.createElement('h2'); 
+  form.appendChild(h2);
+  h2.textContent = 'Contact Us'; 
+
+  const formDivsArrayNames = ['Full Name', 'Email', 'Your-Message']; 
+  const formPlaceHolderTxt = ['Jane Doe', 'youremail@mail.com']; 
+
+  for(let item in formDivsArrayNames){
+    let div = document.createElement('div');
+    div.setAttribute('class', 'field'); 
+
+    let label = document.createElement('label');
+    label.setAttribute('for', 'name');
+    label.textContent = `${formDivsArrayNames[item]}`; 
+    if(formDivsArrayNames[item] == 'Your-Message'){
+      let textArea = document.createElement('textarea'); 
+      textArea.rows="5"; 
+      textArea.name="message"; 
+      textArea.id="message";
+      textArea.placeholder="Your Message";
+      div.appendChild(label); 
+      div.appendChild(textArea); 
+    }else{
+      let input = document.createElement("input");
+      input.type = "text";
+      input.id = "name";
+      input.name = "name";
+      input.placeholder = `${formPlaceHolderTxt[item]}`; 
+      div.appendChild(label);
+      div.appendChild(input);
+    } 
+    form.appendChild(div); 
+  }
+
+  return form; 
 }
 
 

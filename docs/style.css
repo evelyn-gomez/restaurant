@@ -181,7 +181,7 @@ tr:nth-child(even) {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 30px;
   scroll-behavior: smooth;
   overflow-y: auto;
 }
@@ -230,10 +230,59 @@ tr:nth-child(even) {
 
 /* contact content */
 #contact-content{
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows:2fr 1fr;
   align-items: center;
   justify-content: center;
+  overflow-y: auto;
+}
+#form-and-map-div{
+  display:flex;
+  flex-direction:row; 
+}
+#form-container{
+  /* background-color: #fff;
+  border-radius: 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
+  width: 350px;
+  justify-self: center;
+}
+form{
+  display:flex; 
+  flex-direction: column;
+  max-width: 400px;
+  margin: 10px auto;
+  padding: 0.5rem 1rem;
+}
+form h1{
+  padding: 5px 0;
+  font-size: 1.4rem;
+  font-weight: normal;
+  text-align: center;
+  color: #111;
+}
+.field{
+  margin-bottom: .75rem;
+}
+label{
+  display: inline-block;
+  margin-bottom: 5px;
+  vertical-align: top;
+  width: 100%;
+}
+input{
+  border: solid 1px #ccc;
+  border-radius: 3px;
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+  width: 100%;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+textArea {
+  width: 100%;
+  height: 93px;
 }
 #contact-info {
   display: grid;

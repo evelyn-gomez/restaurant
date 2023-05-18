@@ -67,7 +67,7 @@ class Page {
     let header = this.createTabHeader("CONTACT"); 
     header.setAttribute('id','contact-header'); 
     header.onclick = () => this.setCurrentTab(this.contactTab);
-    let content = contactInfo();
+    let content = contactContent();
     return { header, content };
   }
 

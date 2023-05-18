@@ -197,9 +197,7 @@ tr:nth-child(even) {
   max-width: 600px;
   gap: 15px;
 }
-#item-image-div{
 
-}
 #item-div{
   display: flex;
   flex-direction: column;

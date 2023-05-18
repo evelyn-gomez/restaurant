@@ -7,7 +7,7 @@ export function menuContent(){
   // let p = document.createElement('p');
   // p.textContent = "Paragraph -- for menu content"; 
 
-  let chickenInfo = ['Lorem Ipsum', 'dolor sit amet, consectetur adipiscing elit. Ut ullamcorper ultricies lectus et ornare. Quisque consectetur neque diam, a lacinia dolor commodo sed. Donec sodales sodales tellus quis sodales. Etiam.', '$2.50']
+  let itemInfo = ['Lorem Ipsum', 'dolor sit amet, consectetur adipiscing elit. Ut ullamcorper ultricies lectus et ornare. Quisque consectetur neque diam, a lacinia dolor commodo sed. Donec sodales sodales tellus quis sodales. Etiam.', '$2.50']
 
   function createItemPic(){
     let div = document.createElement('div');
@@ -58,7 +58,7 @@ export function menuContent(){
   function makeItems(numOfItems){
     let itemArray = []; 
     for(let i=0; i < numOfItems; i++){
-       itemArray.push(createItem(chickenInfo[0],chickenInfo[1], chickenInfo[2]));
+       itemArray.push(createItem(itemInfo[0],itemInfo[1], itemInfo[2]));
        menu.appendChild(itemArray[i]); 
     };
     return itemArray; 

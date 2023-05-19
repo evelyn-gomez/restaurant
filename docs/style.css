@@ -266,6 +266,16 @@ form{
   margin: 10px auto;
   padding: 0.5rem 1rem;
 }
+form > button{
+  display: inline-block;
+  font-family: inherit;
+  border-radius: 5px;
+  padding: 3px;
+  width: 60%;
+  height: 2rem;
+  align-self: center;
+  background: linear-gradient(180deg,#4285f4ba -60.04%,#1967d296 100%);
+}
 form h1{
   padding: 5px 0;
   font-size: 1.4rem;

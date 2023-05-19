@@ -20,9 +20,14 @@ export function contactContent(){
 
   let formContainer = document.createElement('div'); 
   formContainer.setAttribute('id', 'form-container');
-  formContainer.appendChild(createContactUsForm());
+  const form = createContactUsForm()
+  formContainer.appendChild(form);
 
-
+  form.addEventListener('submit', (e)=>{
+    e.preventDefault(); 
+    alert('Hi, Thanks for checking out my project!');
+  })
+  
   const contactAndMap = document.createElement('div'); 
   contactAndMap.id = 'contact-and-map-div'; 
 
@@ -134,7 +139,10 @@ function createContactUsForm(){
     } 
     form.appendChild(div); 
   }
-
+  const button = document.createElement('button'); 
+  button.type = 'submit'; 
+  button.textContent = 'Send Message'; 
+  form.appendChild(button); 
   return form; 
 }
 

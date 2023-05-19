@@ -1,4 +1,4 @@
-import {contactInfo } from "./contact";
+import { createHoursofOperation } from "./contact";
 import newPage from "./initial_load";
 
 export function homepageContent(){
@@ -31,11 +31,9 @@ for(let i = 0; i < 2; i++){
       newPage.setCurrentTab(newPage.menuTab); 
       return;
     })
-  } else{ 
-    // div.append(contactInfo());
-   return; 
+  }else{ 
+    div.append(createHoursofOperation());
   }
-
   mainDiv.appendChild(div); 
 }
 return; 

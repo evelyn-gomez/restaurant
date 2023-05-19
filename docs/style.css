@@ -136,15 +136,22 @@ h1 {
   display: flex;
   flex-direction: column;
   margin-top: 30px;
-  background-color: #fe5d26b5;
+  background-color: #e274fbeb;
   border-radius: 15px;
-  align-content: center;
+  /* align-content: center; */
   justify-self: center;
   /* justify-content: center; */
-  padding: 10px;
+  padding: 15px;
   /* max-width: 600px; */
-  max-height: 500px;
-  height: 400px;
+  /* max-height: 500px;
+  height: 400px; */
+}
+#hours{
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2rem;
+  font-family: inherit;
+  align-items: center;
 }
 
 /* div#hours{
@@ -231,14 +238,18 @@ tr:nth-child(even) {
 /* contact content */
 #contact-content{
   display: grid;
-  grid-template-rows:2fr 1fr;
+  grid-template-columns:1fr 1fr;
   align-items: center;
   justify-content: center;
   overflow-y: auto;
+  gap: 25px;
 }
-#form-and-map-div{
+#contact-and-map-div{
   display:flex;
-  flex-direction:row; 
+  flex-direction:column; 
+  align-self: start;
+  margin-top: 60px;
+
 }
 #form-container{
   /* background-color: #fff;
@@ -246,6 +257,7 @@ tr:nth-child(even) {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
   width: 350px;
   justify-self: center;
+  align-self: start;
 }
 form{
   display:flex; 
@@ -260,6 +272,11 @@ form h1{
   font-weight: normal;
   text-align: center;
   color: #111;
+}
+iframe{
+  width: 450px;
+  height: 300px;
+  border-style: 0;
 }
 .field{
   margin-bottom: .75rem;
@@ -281,19 +298,24 @@ input{
 }
 
 textArea {
+  display: inline-block;
   width: 100%;
   height: 93px;
+  font-family: inherit;
+  border-radius: 10px;
+  padding: 5px;
+  font-size: 1rem;
 }
 #contact-info {
   display: grid;
   row-gap: 20px;
-  justify-content: center;
-  /* margin: 1rem;
+  /* justify-content: center; */
+  margin: 1rem;
   max-width: 40vh;
-  max-height: 45vh; */
-  font-family: 'Cap-Sourcesans';
+  max-height: 45vh;
+  font-family: inherit;
   /* font-size: larger; */
-  font-size:20px;
+  font-size:18px;
   align-items: center;
 }
 #contact-info > div{
